@@ -16,6 +16,8 @@ const schema = new Schema({
     Loai: {type: String, required: false},
     Nguoidung: {type: String, required: false},
     Vitri: {type: String, required: false},
+    Site: {type: String, required: false},
+    Software: {type: String, required: false},
 })
 
 

@@ -3,8 +3,8 @@ var router =  express.Router()
 var passport = require("../config/passport")
 var xulydb = require("../CRUD/xulydb")
 var moment = require('moment')
-const toolmongo = require("../tool_mongo/backup")
-const sendmail = require('../sendmail/sendmail')
+// const toolmongo = require("../tool_mongo/backup")
+// const sendmail = require('../sendmail/sendmail')
 const exceljs = require('exceljs');
 const fs = require('fs')
 
