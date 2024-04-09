@@ -1,0 +1,49 @@
+<div style="margin-bottom:20px; color: rgb(89, 151, 1); position: relative; bottom: auto;" >
+  <h3>DEVICE FORM</h3>
+</div>
+<form action="/update_device" method="post" >
+<div class="form-row">
+  <div class="form-group col-md-6">
+      <label>Tên Thiết Bị</label>
+      <input type="test" class="form-control" id="txtname" name="name" value="<%= data.name %>">
+  </div>
+  <div class="form-group col-md-6">
+    <label>Vị Trí</label>
+    <input type="text" class="form-control" id="txtvitri"  name="location" value="<%= data.location %>">
+  </div>
+  <div class="form-group col-md-6">
+    <label>Công Suất (W)</label>
+    <input type="number" class="form-control" id="txtcongsuat"  name="power" value="<%= data.power %>" step="0.1">
+  </div>
+  
+  <div class="form-group col-md-6">
+    <label>Modem</label>
+    <input type="text" class="form-control" id="txtmodem"  name="modem" value="<%= data.modem %>">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlTextarea1">Ghi Chú</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name='note' ><%= data.note %></textarea>
+  </div>
+  <div class="form-group col-md-6">
+    <label>Username</label>
+    <input type="text" class="form-control" id="txtusername" name="username" value="<%= data.username %>" readonly>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label>id</label>
+    <input type="text" class="form-control" id="id" name="nameid" value="<%= data._id %>" readonly>
+</div> 
+  
+</div>
+<div class="form-group">
+  <button type="submit" class="btn btn-success" id="btnsubmitupdate" >Update device</button>
+  <button type="button" class="btn btn-primary float-right" id="btnxem" >Xem device</button> 
+</div>
+  
+  
+</form>
+
+<script>
+
+</script>
