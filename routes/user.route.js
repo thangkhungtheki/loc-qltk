@@ -269,7 +269,24 @@ router.get('/dashboard', authenticated, async(req, res) => {
     // }
 })
 
-router.get('/thietbi', async(req, res) => {
+router.get('/thietbi', authenticated, async(req, res) => {
+    var dat = {
+        Ma: "",
+        Mainboard: "",
+        RAM: "",
+        CPU: "",
+        HardDisk: "",
+        Monitor: "",
+        VideoCard: "",
+        OS: "",
+        Notes: "",
+        BoPhan: "",
+        DeXuat: "",
+        Loai: "",
+        Nguoidung: "",
+        Vitri: "",
+    }
+    // ------------------------------
     if(req.isAuthenticated()){
         let data = await xulydb.docTb()
             res.render("mainSbAdmin/dbthietbi",{
@@ -282,23 +299,9 @@ router.get('/thietbi', async(req, res) => {
     }else{
         res.redirect("/signin")
     }
+    // ------------------------------
 })
-var dat = {
-    Ma: "",
-    Mainboard: "",
-    RAM: "",
-    CPU: "",
-    HardDisk: "",
-    Monitor: "",
-    VideoCard: "",
-    OS: "",
-    Notes: "",
-    BoPhan: "",
-    DeXuat: "",
-    Loai: "",
-    Nguoidung: "",
-    Vitri: "",
-}
+
 router.get('/editthietbi', async(req, res) => {
     res.render("mainSbAdmin/dbthietbi-edit",{
         _username: req.user.username,
@@ -445,8 +448,9 @@ router.post('/searcheditdp2', async(req, res) => {
     
 })
 
-router.get("/themthietbi", (req, res) => {
-    if(req.isAuthenticated()){
+
+router.get("/themthietbi", authenticated, (req, res) => {
+    
             res.render("mainSbAdmin/themthietbi",{
             _username: req.user.username,
             activeuser: '',
@@ -454,10 +458,9 @@ router.get("/themthietbi", (req, res) => {
             activeedittb: '',
             activetbdp2: '',
             activethem: '',
+            expressFlash: req.flash('success') ,
+            expressFlasheror: req.flash('error')
         })
-    }else{
-        res.redirect("/signin")
-    }
 })
 
 router.get("/themthietbidp2", (req, res) => {
@@ -474,27 +477,43 @@ router.get("/themthietbidp2", (req, res) => {
         res.redirect("/signin")
     }
 })
-
-router.post("/themtb",(req, res) => {
+// ----- Thêm thiết bị mới ----
+router.post("/themtb", authenticated, async(req, res) => {
     let doc = {
         Ma: req.body.txtma,
+        UGDN: req.body.txtUGDN,
+        serial: req.body.txtserial,
+        email : req.body.txtemail,
         Mainboard: req.body.txtmain,
         RAM: req.body.txtram,
         CPU: req.body.txtcpu,
         HardDisk: req.body.txthdd,
         Monitor: req.body.txtmonitor,
-        VideoCard: req.body.txtvideo,
+        Nguoidung : req.body.txtnguoidung,
+        BoPhan : req.body.selectbophan,
+        Loai : req.body.selectloai,
+        headcount : req.body.selectheadcount,
+        noilamviec : req.body.selectnoilamviec,
+        ngaymua : req.body.txtngaymua,
+        sothang : req.body.txtsothang,
         OS: req.body.txtOS,
-        Notes: req.body.txtnotes,
-        BoPhan: req.body.txtbophan,
-        DeXuat: req.body.txtdexuat,
-        Loai: req.body.txtloai,
-        Nguoidung: req.body.txtnguoidung,
-        Vitri: req.body.txtvitri,
+        dexuat : req.body.txtdexuat,
+        software : req.body.txtsoftware,
+        notes : req.body.txtnotes,
+        hethan: ''
+        
     }
-    xulydb.themtb(doc)
-    res.redirect("/themthietbi")
+    const result = await xulydb.themtb(doc)
+    if(result){
+        req.flash('success', 'Dữ liệu đã lưu thành công !!!.')
+        
+    }else{
+        req.flash('error', 'Lỗi server hoặc nhập ko chính xác !!!.')
+    }
+    res.redirect("/themthietbi")    
+    
 })
+// ----- ---------------- ----
 
 router.post("/themtbdp2",(req, res) => {
     let doc = {

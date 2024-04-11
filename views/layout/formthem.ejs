@@ -1,27 +1,85 @@
 <div class="container">
   <h2> THÊM THIẾT BỊ </h2>
+   <% if (expressFlash.length > 0) { %>
+    
+    <div style="color: green; align-items: center;">
+      <%= expressFlash %>
+    </div>
+  
+    <% } else { %>
+    <div style="color: rgb(209, 7, 24); align-items: center;">
+      <%= expressFlasheror %>
+    </div>
+    <% } %> 
+    
   <form action="themtb" method="post">
-
+    <div class="form-row">
+      <span class="muc1">A.Thông tin người dùng </span>
+    </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label>Mã Thiết Bị</label>
-        <input class="form-control" type="text" placeholder="" name='txtma' id="id1ma" value="" />
+        <label>1.Hostname/Mã thiết bị </label>
+        
+        <input class="form-control" type="text" placeholder="Hostname/Mã thiết bị" name='txtma' id="id1ma" value="" />
       </div>
       <div class="form-group col-md-6">
-        <label>UGDN</label>
-        <input class="form-control" type="text" placeholder="" value="" name="txtUGDN">
+        <label>2.UGDN  </label>
+        <input class="form-control" type="text" placeholder="UGDN" value="" name="txtUGDN">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label>Serial number</label>
-        <input class="form-control" type="text" placeholder="" value="" name="txtserial">
+        <label>3.Email  </label>
+        <input class="form-control" type="email" placeholder="" value="Email" name="txtemail">
       </div>
       <div class="form-group col-md-6">
-        <label>Email</label>
-        <input class="form-control" type="email" placeholder="" value="" name="txtemail">
+        <label>4.Họ & tên  </label>
+        <input class="form-control" type="text" placeholder="Họ & tên" value="" name="txtnguoidung">
       </div>
     </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>5.Di động</label>
+        <input class="form-control" type="text" placeholder="Di động" value="" name="txtdidong">
+      </div>
+      <div class="form-group col-md-6">
+        <label>6.Headcount</label>
+        <select class="custom-select" id="inputGroupSelectheadcount" name="selectheadcount">
+          <option value='' selected disabled hidden>Chọn Headcount ...</option>
+          <option value="UPL Vietnam/ Bien Hoa (Amata)">UPL Vietnam/ Bien Hoa (Amata)</option>
+          <option value="UPL Vietnam/ HCMc (District 7)">UPL Vietnam/ HCMc (District 7)</option>
+          <option value="UPL Vietnam / Ha Noi">UPL Vietnam / Ha Noi</option>
+          <option value="UPL Vietnam / Binh Dinh (Closed)">UPL Vietnam / Binh Dinh (Closed)</option>
+          <option value="UPL Vietnam / Can Tho">UPL Vietnam / Can Tho</option>
+          <option value="AvantaSeed Vietnam / Long An">AvantaSeed Vietnam / Long An</option>
+          <option value="Arysta Vietnam / Binh Duong">Arysta Vietnam / Binh Duong</option>
+          <option value="UPL Global (India,Indonesia, Japan ..ect)">UPL Global (India,Indonesia, Japan ..ect)</option>
+          <option value="Site khác (Other sites)">Site khác (Other sites)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>7.Nơi làm việc</label>
+        <select class="custom-select" id="inputGroupSelect01" name="selectnoilamviec">
+          <option value='' selected disabled hidden>Chọn Nơi làm việc ...</option>
+          <option value="UPL Vietnam/ Bien Hoa (Amata)">UPL Vietnam/ Bien Hoa (Amata)</option>
+          <option value="UPL Vietnam/ HCMc (District 7)">UPL Vietnam/ HCMc (District 7)</option>
+          <option value="UPL Vietnam / Ha Noi">UPL Vietnam / Ha Noi</option>
+          <option value="UPL Vietnam / Binh Dinh (Closed)">UPL Vietnam / Binh Dinh (Closed)</option>
+          <option value="UPL Vietnam / Can Tho">UPL Vietnam / Can Tho</option>
+          <option value="AvantaSeed Vietnam / Long An">AvantaSeed Vietnam / Long An</option>
+          <option value="Arysta Vietnam / Binh Duong">Arysta Vietnam / Binh Duong</option>
+          <option value="UPL Global (India,Indonesia, Japan ..ect)">UPL Global (India,Indonesia, Japan ..ect)</option>
+          <option value="Site khác (Other sites)">Site khác (Other sites)</option>
+        </select>
+      </div>
+    </div>
+    <hr />
+    <div class="form-row">
+      <span class="muc1">B.Thông tin phần cứng</span>
+    </div>
+    
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>Mainboard</label>
@@ -48,8 +106,8 @@
         <input class="form-control" type="text" placeholder="" value="" name="txtmonitor">
       </div>
       <div class="form-group col-md-6">
-        <label>Người dùng</label>
-        <input class="form-control" type="text" placeholder="" value="" name="txtnguoidung">
+        <label>Serial number</label>
+        <input class="form-control" type="text" placeholder="" value="" name="txtserial">
       </div>
     </div>
     <div class="form-row">
@@ -57,9 +115,23 @@
         <label>Bộ Phận</label>
         <select class="custom-select" id="inputGroupSelect01" name="selectbophan">
           <option value='' selected disabled hidden>Chọn Bộ Phận ...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="QA">QA</option>
+          <option value="QC">QC</option>
+          <option value="HR">HR</option>
+          <option value="Admin">Admin</option>
+          <option value="Accounting">Accounting</option>
+          <option value="Import & Export">Import & Export</option>
+          <option value="Safety/HSE">Safety/HSE</option>
+          <option value="PCCC">PCCC</option>
+          <option value="Maintenace">Maintenace</option>
+          <option value="IT">IT</option>
+          <option value="Warehouse">Warehouse</option>
+          <option value="Planning">Planning</option>
+          <option value="Purchasing">Purchasing</option>
+          <option value="BoD">BoD</option>
+          <option value="Trợ lý">Trợ lý</option>
+          <option value="Legal">Legal</option>
+          <option value="Dự Án/Điều phối">Dự Án/Điều phối</option>
         </select>
       </div>
 
@@ -71,33 +143,8 @@
           <option value="Laptop">Laptop</option>
           
         </select>
-
-
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>Headcount </label>
-        <select class="custom-select" id="inputGroupSelect01" name="selectheadcount">
-          <option value='' selected disabled hidden>Chọn Headcount ...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-      
-      <div class="form-group col-md-6">
-        <label>Nơi làm việc</label>
-        <select class="custom-select" id="inputGroupSelect01" name="selectnoilamviec">
-          <option value='' selected disabled hidden>Chọn Nơi làm việc ...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-
-      </div>
-    </div>
-    
     <div class="form-row">
       
       <div class="form-group col-md-6">
@@ -113,20 +160,11 @@
       <div class="form-group col-md-6">
         <label>OS</label>
         <textarea class="form-control" rows="3" style="resize: none;" value="" name="txtOS" id="idtxtOS" type="text"></textarea>
-        <!-- <input class="effect-20" type="text" placeholder="" value="" name="txtOS">
-          
-          <span class="focus-border">
-            <i></i>
-          </span> -->
       </div>
 
       <div class="form-group col-md-6">
         <label>Đề Xuất</label>
         <textarea class="form-control" rows="3" style="resize: none;" value="" name="txtdexuat" id="textareadx" type="text"></textarea>
-        <!-- <input class="effect-20" type="text" placeholder="" value="" name="txtdexuat">
-              <span class="focus-border">
-                  <i></i>
-              </span> -->
       </div>
     </div>
     <div class="form-row">
@@ -159,3 +197,11 @@
     </div>
   </form>
 </div>
+<style>
+  .muc1{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: larger;
+  }
+</style>
