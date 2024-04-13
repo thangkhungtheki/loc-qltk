@@ -270,22 +270,6 @@ router.get('/dashboard', authenticated, async(req, res) => {
 })
 
 router.get('/thietbi', authenticated, async(req, res) => {
-    var dat = {
-        Ma: "",
-        Mainboard: "",
-        RAM: "",
-        CPU: "",
-        HardDisk: "",
-        Monitor: "",
-        VideoCard: "",
-        OS: "",
-        Notes: "",
-        BoPhan: "",
-        DeXuat: "",
-        Loai: "",
-        Nguoidung: "",
-        Vitri: "",
-    }
     // ------------------------------
     if(req.isAuthenticated()){
         let data = await xulydb.docTb()
@@ -478,7 +462,7 @@ router.get("/themthietbidp2", (req, res) => {
     }
 })
 // ----- Thêm thiết bị mới ----
-router.post("/themtb", authenticated, async(req, res) => {
+router.post("/themtb",  async(req, res) => {
     let doc = {
         Ma: req.body.txtma,
         UGDN: req.body.txtUGDN,
@@ -488,21 +472,21 @@ router.post("/themtb", authenticated, async(req, res) => {
         RAM: req.body.txtram,
         CPU: req.body.txtcpu,
         HardDisk: req.body.txthdd,
-        Monitor: req.body.txtmonitor,
         Nguoidung : req.body.txtnguoidung,
+        Didong: req.body.txtdidong,
         BoPhan : req.body.selectbophan,
         Loai : req.body.selectloai,
         headcount : req.body.selectheadcount,
         noilamviec : req.body.selectnoilamviec,
         ngaymua : req.body.txtngaymua,
-        sothang : req.body.txtsothang,
-        OS: req.body.txtOS,
+        ngayhethan : req.body.txtngayhethan,
         dexuat : req.body.txtdexuat,
         software : req.body.txtsoftware,
         notes : req.body.txtnotes,
-        hethan: ''
+        morong: ''
         
     }
+    //console.log(doc)
     const result = await xulydb.themtb(doc)
     if(result){
         req.flash('success', 'Dữ liệu đã lưu thành công !!!.')

@@ -34,6 +34,7 @@ async function them_createthietbi(doc){
         await _createthietbi.create(doc)
         return true
     }catch(e){
+        console.log(e)
         return false
     }
 }
