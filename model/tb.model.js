@@ -21,6 +21,7 @@ const schema = new Schema({
     ngayhethan: {type: String, required: false},
     dexuat: {type: String, required: false},
     notes: {type: String, required: false},
+    tinhtrang: {type: String, required: true},
     morong: {type: String, required: false},
 })
 

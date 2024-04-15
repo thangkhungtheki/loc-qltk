@@ -1,22 +1,12 @@
 <div class="container">
   <div class="form-row">
     <div class="form-group col-md-12 h4" style="color: blue;">
-      THÊM THIẾT BỊ (ADD NEW DEVICE)
+      SỬA THIẾT BỊ (EDIT DEVICE)
     </div>
   </div>
-  <% if (expressFlash.length > 0) { %>
+  
 
-  <div style="color: green; align-items: center;">
-    <%= expressFlash %>
-  </div>
-
-  <% } else { %>
-  <div style="color: rgb(209, 7, 24); align-items: center;">
-    <%= expressFlasheror %>
-  </div>
-  <% } %>
-
-  <form action="themtb" method="post">
+  <form action="updatetb" method="post">
     <div class="form-row">
       <span class="muc1">A.Thông tin người dùng </span>
     </div>
@@ -24,32 +14,32 @@
       <div class="form-group col-md-6">
         <label>1.Hostname/Mã thiết bị </label>
 
-        <input class="form-control" type="text" placeholder="Hostname/Mã thiết bị" name='txtma' id="id1ma" value="" required />
+        <input class="form-control" type="text" placeholder="Hostname/Mã thiết bị" name='txtma' id="id1ma" value="<%= data.Ma %>" readonly />
       </div>
       <div class="form-group col-md-6">
         <label>2.UGDN </label>
-        <input class="form-control" type="text" placeholder="UGDN" value="" name="txtUGDN" required>
+        <input class="form-control" type="text" placeholder="UGDN" value="<%= data.UGDN %>" name="txtUGDN" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>3.Email </label>
-        <input class="form-control" type="email" placeholder="Email" value="" name="txtemail" required>
+        <input class="form-control" type="email" placeholder="Email" value="<%= data.email %>" name="txtemail" required>
       </div>
       <div class="form-group col-md-6">
         <label>4.Họ & tên </label>
-        <input class="form-control" type="text" placeholder="Họ & tên" value="" name="txtnguoidung" required>
+        <input class="form-control" type="text" placeholder="Họ & tên" value="<%= data.Nguoidung %>" name="txtnguoidung" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>5.Di động</label>
-        <input class="form-control" type="text" placeholder="Di động" value="" name="txtdidong">
+        <input class="form-control" type="text" placeholder="Di động" value="<%= data.Didong %>" name="txtdidong">
       </div>
       <div class="form-group col-md-6">
         <label>6.Headcount</label>
         <select class="custom-select" id="inputGroupSelectheadcount" name="selectheadcount" required>
-          <option value='' selected disabled hidden>Chọn Headcount ...</option>
+          <option value='<%= data.headcount %>' selected disabled hidden><%= data.headcount %></option>
           <option value="UPL Vietnam/ Bien Hoa (Amata)">UPL Vietnam/ Bien Hoa (Amata)</option>
           <option value="UPL Vietnam/ HCMc (District 7)">UPL Vietnam/ HCMc (District 7)</option>
           <option value="UPL Vietnam / Ha Noi">UPL Vietnam / Ha Noi</option>
@@ -66,7 +56,7 @@
       <div class="form-group col-md-6">
         <label>7.Nơi làm việc</label>
         <select class="custom-select" id="inputGroupSelect01" name="selectnoilamviec" required>
-          <option value='' selected disabled hidden>Chọn Nơi làm việc ...</option>
+          <option value='<%= data.noilamviec %>' selected disabled hidden><%= data.noilamviec %></option>
           <option value="UPL Vietnam/ Bien Hoa (Amata)">UPL Vietnam/ Bien Hoa (Amata)</option>
           <option value="UPL Vietnam/ HCMc (District 7)">UPL Vietnam/ HCMc (District 7)</option>
           <option value="UPL Vietnam / Ha Noi">UPL Vietnam / Ha Noi</option>
@@ -81,7 +71,7 @@
       <div class="form-group col-md-6">
         <label>8.Bộ Phận</label>
         <select class="custom-select" id="inputGroupSelect01" name="selectbophan" required>
-          <option value='' selected disabled hidden>Chọn Bộ Phận ...</option>
+          <option value="<%= data.BoPhan %>" selected disabled hidden><%= data.BoPhan %></option>
           <option value="QA">QA</option>
           <option value="QC">QC</option>
           <option value="HR">HR</option>
@@ -110,7 +100,7 @@
       <div class="form-group col-md-6">
         <label>9.Loại/Type</label>
         <select class="custom-select" id="inputGroupSelect01" name="selectloai" required>
-          <option value='' selected disabled hidden>Loại/Type</option>
+          <option value='<%= data.Loai %>' selected disabled hidden><%= data.Loai %></option>
           <option value="Desktop-Máy lắp ráp">Desktop-Máy lắp ráp</option>
           <option value="Desktop-Máy bộ">Desktop-Máy bộ</option>
           <option value="Laptop">Laptop</option>
@@ -118,43 +108,43 @@
       </div>
       <div class="form-group col-md-6">
         <label>10.Mainboard</label>
-        <input class="form-control" type="text" placeholder="Mainboard" value="" name="txtmain" required>
+        <input class="form-control" type="text" placeholder="Mainboard" value="<%= data.Mainboard %>" name="txtmain" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>11.RAM/Bus RAM</label>
-        <input class="form-control" type="text" placeholder="RAM/Bus RAM" value="" name="txtram" required>
+        <input class="form-control" type="text" placeholder="RAM/Bus RAM" value="<%= data.RAM %>" name="txtram" required>
       </div>
       <div class="form-group col-md-6">
         <label>12.CPU</label>
-        <input class="form-control" type="text" placeholder="CPU" value="" name="txtcpu" required>
+        <input class="form-control" type="text" placeholder="CPU" value="<%= data.CPU %>" name="txtcpu" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>13.HDD/SSD</label>
-        <input class="form-control" type="text" placeholder="HDD/SSD" value="" name="txthdd" required>
+        <input class="form-control" type="text" placeholder="HDD/SSD" value="<%= data.HardDisk %>" name="txthdd" required>
       </div>
       <div class="form-group col-md-6">
         <label>14.Serial number</label>
-        <input class="form-control" type="text" placeholder="Serial number" value="" name="txtserial" required>
+        <input class="form-control" type="text" placeholder="Serial number" value="<%= data.serial %>" name="txtserial" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>15.Ngày mua</label>
-        <input class="form-control" type="date" placeholder="" value="" name="txtngaymua">
+        <input class="form-control" type="date" placeholder="" value="<%= data.ngaymua %>" name="txtngaymua">
       </div>
       <div class="form-group col-md-6">
         <label>16.Ngày hết hạn</label>
-        <input class="form-control" type="date" placeholder="" value="" name="txtngayhethan">
+        <input class="form-control" type="date" placeholder="" value="<%= data.ngayhethan %>" name="txtngayhethan">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>17.Phần mềm</label>
-        <textarea class="form-control" rows="5" cols="50" value="" name="txtsoftware" id="textareasoftware" type="text" required></textarea>
+        <textarea class="form-control" rows="5" cols="50" name="txtsoftware" id="textareasoftware" type="text" required><%= data.software %></textarea>
       </div>
     </div>
     <hr class="hr" />
@@ -164,18 +154,18 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>18.Đề xuất</label>
-        <textarea class="form-control" rows="5" cols="50" name="txtdexuat" id="textareadx" type="text"></textarea>
+        <textarea class="form-control" rows="5" cols="50" name="txtdexuat" id="textareadx" type="text"><%= data.dexuat %></textarea>
       </div>
       <div class="form-group col-md-6">
         <label>19.Ghi chú</label>
-        <textarea class="form-control" rows="5" cols="50" name="txtnotes" id="textareaghichu" type="text"></textarea>
+        <textarea class="form-control" rows="5" cols="50" name="txtnotes" id="textareaghichu" type="text"><%= data.notes %></textarea>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>20.Tình Trạng</label>
         <select class="custom-select" id="inputGroupSelect01" name="selecttinhtrang" required>
-          <option value='' selected disabled hidden>Tình trạng</option>
+          <option value='<%= data.tinhtrang %>' selected disabled hidden><%= data.tinhtrang %></option>
           <option value="Đang sử dụng">Đang sử dụng</option>
           <option value="Lưu kho">Lưu kho</option>
           <option value="Thanh lý">Thanh lý</option>
@@ -183,9 +173,9 @@
       </div>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-12">
-        <button class="btn btn-secondary float-left" type="reset" id="btnreset">XOÁ</button>
-        <button class="btn btn-primary float-right" type="submit" id="btncapnhat">LƯU DB</button>
+      <div class="form-group col-md-6">
+        <!-- <button class="btn btn-secondary float-left" type="reset" id="btnreset">XOÁ</button> -->
+        <button class="btn btn-primary float-left" type="submit" id="btnluucapnhat">UPDATE DB</button>
 
       </div>
     </div>

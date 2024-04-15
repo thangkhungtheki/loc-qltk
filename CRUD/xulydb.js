@@ -1,7 +1,7 @@
 
 //const mongoose = require("mongoose")
 const _user = require("../model/user.model")
-const _thietbi = require("../model/tb.model")
+const _thietbi = require("../model/tb.model") // đang làm cái này
 const _thietbidp2 = require("../model/tb.model.dp2")
 const _vattu = require("../model/vattu.model")
 const _nhapvattu = require("../model/nhapvattu.model")
@@ -23,55 +23,12 @@ async function xoaUser(username) {
     }
 }
 
-async function doc_createthietbi(){
-    let docs = await _createthietbi.find()
-    return docs
-}
 
-async function them_createthietbi(doc){
-    //console.log(doc)
-    try{
-        await _createthietbi.create(doc)
-        return true
-    }catch(e){
-        console.log(e)
-        return false
-    }
-}
 
-async function xoa_createthietbi(tentb){
-    try {
-        await _createthietbi.deleteOne({tentb: tentb})
-        return true
-    } catch (error) {
-        return error
-    }
-    
-    
-}
 
-async function sua_createthietbi(tentbb, doc){
-    try{
-        await _createthietbi.updateOne({tentb: tentbb}, doc)
-        
-        return true
-    }catch(e){
-        console.log(false)
-        return false
-    }
-}
 
-async function tim_createthietbi(tentbb){
-    let doc = await _createthietbi.findOne({tentb: tentbb})
-    //console.log(doc)
-    if(doc){
-        //console.log(doc)
-        return doc
-    } 
-    else {
-        return false
-    }
-}
+
+
 
 async function find(users){
     let doc = await _user.findOne({username: users})
@@ -92,13 +49,10 @@ async function docTb(){
     return docs
 }
 
-async function docTbdp2(){
-    let docs = await _thietbidp2.find()
-    return docs
-}
 
-async function timTb(ab){
-    let docs = await _thietbi.findOne({Ma: ab})
+
+async function timTb(id){
+    let docs = await _thietbi.findById({_id: id})
     return docs
 }
 
@@ -343,30 +297,5 @@ module.exports = {
     timTb,
     updatetb,
     themtb,
-    docTbdp2,
-    xoaTbdp2,
-    timTbdp2,
-    updatetbdp2,
-    themtbdp2,
-    timvattu,
-    luunhapvattu,
-    luuxuatvattu,
-    luumavattu,
-    timnhap,
-    timxuat,
-    timton,
-    baocaovattu,
-    timxuatvattu,
-    doc_createthietbi,
-    them_createthietbi,
-    sua_createthietbi,
-    xoa_createthietbi,
-    tim_createthietbi,
-    sua_createthietbi,
-    docdevices,
-    create_device,
-    delete_device,
-    docdeviceid,
-    update_device,
     xoaUser
 }
