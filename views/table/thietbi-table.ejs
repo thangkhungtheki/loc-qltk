@@ -8,8 +8,13 @@
             <h6 class="m-0 font-weight-bold text-primary">Database Thiet Bi Views </h6>
         </div>
         <div class="card-body"> -->
-  <div>
-    <button class="btn btn-primary" id="btnthem" style="margin-bottom: 10px;" onclick=them()>Thêm Thiết Bị</button>
+  <div class="form-row">
+    <div class="form-group col-md-6" >
+      <button class="btn btn-primary float-left" id="btnthem" style="margin-bottom: 10px;" onclick=them()>Thêm Thiết Bị</button>
+    </div>
+    <div class="form-group col-md-6">
+      <button class="btn btn-success float-right" id="btnxuatexcel" style="margin-bottom: 10px;" onclick=xuatexcel()>Xuất Excel</button>
+    </div>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -225,5 +230,8 @@
     var id = $('#txtid').val()
     // alert('Click ' + id)
     window.location.href = "/suathietbi?id=" + id
-  }id
+  }
+  function xuatexcel(){
+    window.location.href = '/chuyenexcel'
+  }
 </script>

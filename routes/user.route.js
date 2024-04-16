@@ -318,7 +318,7 @@ router.get("/restoremongo", (req, res) => {
 router.get('/chuyenexcel', authenticated, async(req, res)=> {
     try {
         // Lấy dữ liệu từ MongoDB
-        const documents = await xulydb.docdevices();
+        const documents = await xulydb.docTb();
     
         // Tạo workbook và worksheet của Excel
         const workbook = new exceljs.Workbook();
@@ -326,29 +326,57 @@ router.get('/chuyenexcel', authenticated, async(req, res)=> {
     
         // Đặt tên các cột
         worksheet.columns = [
-          { header: 'Ten TB', key: 'name', width: 20 },
-          { header: 'Vi Tri', key: 'location', width: 20 },
-          { header: 'Cong Suat', key: 'power', width: 20 },
-          { header: 'Modem', key: 'modem', width: 20 },
-          { header: 'Ghichu', key: 'note', width: 20 },
-          { header: 'Username', key: 'username', width: 20 },
+          { header: 'Hostname/Mã thiết bị', key: 'Ma', width: 10 },
+          { header: 'UGDN', key: 'UGDN', width: 10 },
+          { header: 'Email', key: 'email', width: 10 },
+          { header: 'Họ & tên', key: 'Nguoidung', width: 10 },
+          { header: 'Di động', key: 'Didong', width: 10 },
+          { header: 'Headcount', key: 'headcount', width: 10 },
+          { header: 'Nơi làm việc', key: 'noilamviec', width: 10 },
+          { header: 'Bộ Phận', key: 'BoPhan', width: 10 },
+          { header: 'Loại/Type', key: 'Loai', width: 10 },
+          { header: 'Mainboard', key: 'Mainboard', width: 10 },
+          { header: 'RAM/Bus RAM', key: 'RAM', width: 10 },
+          { header: 'CPU', key: 'CPU', width: 10 },
+          { header: 'HDD/SSD', key: 'HardDisk', width: 10 },
+          { header: 'Serial number', key: 'serial', width: 10 },
+          { header: 'Ngày mua', key: 'ngaymua', width: 10 },
+          { header: 'Ngày hết hạn', key: 'ngayhethan', width: 10 },
+          { header: 'Phần mềm', key: 'software', width: 10 },
+          { header: 'Đề xuất', key: 'dexuat', width: 10 },
+          { header: 'Ghi chú', key: 'notes', width: 10 },
+          { header: 'Tình Trạng', key: 'tinhtrang', width: 10 },
         ];
     
         // Thêm dữ liệu vào worksheet
         documents.forEach((document) => {
           worksheet.addRow({ 
-            name: document.name, 
-            location: document.location, 
-            power: document.power, 
-            modem: document.modem, 
-            note: document.note, 
-            username: document.username, 
+            Ma: document.Ma, 
+            UGDN: document.UGDN,
+            email: document.email,
+            serial: document.serial,
+            Mainboard: document.Mainboard,
+            RAM: document.RAM,
+            CPU: document.CPU,
+            HardDisk: document.HardDisk,
+            Nguoidung: document.Nguoidung,
+            Didong: document.Didong,
+            BoPhan: document.BoPhan,
+            Loai: document.Loai,
+            headcount: document.headcount,
+            noilamviec: document.noilamviec,
+            software: document.software,
+            ngaymua: document.ngaymua,
+            ngayhethan: document.ngayhethan,
+            dexuat: document.dexuat,
+            notes: document.notes,
+            tinhtrang: document.tinhtrang,
         });
         });
     
         // Tạo file Excel và gửi về client
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.setHeader('Content-Disposition', 'attachment; filename=documents.xlsx');
+        res.setHeader('Content-Disposition', 'attachment; filename=report.xlsx');
         await workbook.xlsx.write(res);
         res.end();
       } catch (error) {
