@@ -1,220 +1,229 @@
 ﻿<!-- Page Heading -->
 <% var _xoa='' %>
-    <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Bảng xem Device</h1>
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Bảng xem Device</h1>
 
-        <!-- <div class="card shadow mb-4">
+  <!-- <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Database Thiet Bi Views </h6>
         </div>
         <div class="card-body"> -->
-        <div>
-            <button class="btn btn-primary" id="btnthem" style="margin-bottom: 10px;" onclick=them()>Thêm Thiết Bị</button>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr class="table-success">
-                        <th>Control</th>
-                        <th>MaDinhDanh</th>
-                        <th>Mainboard</th>
-                        <th>RAM</th>
-                        <th>CPU</th>
-                        <th>HardDisk</th>
-                        <th>Monitor</th>
-                        <!-- <th>VideoCard</th> -->
-                        <th>OS</th>
-                        <th>Bộphận</th>
-                        <!-- <th>Đềxuất</th>
+  <div>
+    <button class="btn btn-primary" id="btnthem" style="margin-bottom: 10px;" onclick=them()>Thêm Thiết Bị</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr class="table-success">
+          <th>Control</th>
+          <th>MaDinhDanh</th>
+          <th>Mainboard</th>
+          <th>RAM</th>
+          <th>CPU</th>
+          <th>HardDisk</th>
+          <th>Monitor</th>
+          <!-- <th>VideoCard</th> -->
+          <th>OS</th>
+          <th>Bộphận</th>
+          <!-- <th>Đềxuất</th>
                             <th>Loại</th> -->
-                        <th>Nguoidung</th>
-                        <th>Vịtrí</th>
-                        <th>Loại</th>
-                        <th>Notes</th>
+          <th>Nguoidung</th>
+          <th>Vịtrí</th>
+          <th>Loại</th>
+          <th>Notes</th>
 
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr class="table-success">
-                        <th>Control</th>
-                        <th>MaDinhDanh</th>
-                        <th>Mainboard</th>
-                        <th>RAM</th>
-                        <th>CPU</th>
-                        <th>HardDisk</th>
-                        <th>Monitor</th>
-                        <!-- <th>VideoCard</th> -->
-                        <th>OS</th>
-                        <th>Bộphận</th>
-                        <!-- <th>Đềxuất</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr class="table-success">
+          <th>Control</th>
+          <th>MaDinhDanh</th>
+          <th>Mainboard</th>
+          <th>RAM</th>
+          <th>CPU</th>
+          <th>HardDisk</th>
+          <th>Monitor</th>
+          <!-- <th>VideoCard</th> -->
+          <th>OS</th>
+          <th>Bộphận</th>
+          <!-- <th>Đềxuất</th>
                             <th>Loại</th> -->
-                        <th>Nguoidung</th>
-                        <th>Vịtrí</th>
-                        <th>Loại</th>
-                        <th>Notes</th>
+          <th>Nguoidung</th>
+          <th>Vịtrí</th>
+          <th>Loại</th>
+          <th>Notes</th>
 
-                    </tr>
-                </tfoot>
+        </tr>
+      </tfoot>
 
-                <tbody>
-                    <% data.forEach((value)=>{ %>
-                        <% var bien = value._id %>
-                        <% var mathietbi = value.Ma %>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <div class="btn btn-info btn-circle btn-sm" onclick="Sua('<%= bien %>' , '<%= mathietbi %>')"
-                                            data-toggle="modal" data-target="#logoutModal2">
-                                            <i class="fas fa-info-circle"></i>
-                                        </div>
-                                        <div class="btn btn-danger btn-circle btn-sm" data-toggle="modal"
-                                            data-target="#logoutModal" onclick="Luu('<%= bien %>' , '<%= mathietbi %>')">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                        </div>
-                                    </div>
+      <tbody>
+        <% data.forEach((value)=>{ %>
+        <% var bien = value._id %>
+        <% var mathietbi = value.Ma %>
+        <tr>
+          <td>
+            <div>
+              <div class="btn btn-info btn-circle btn-sm" onclick="Sua('<%= bien %>' , '<%= mathietbi %>')" data-toggle="modal" data-target="#logoutModal2">
+                <i class="fas fa-info-circle"></i>
+              </div>
+              <div class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#logoutModal" onclick="Luu('<%= bien %>' , '<%= mathietbi %>')">
+                <i class="fas fa-trash">
+                </i>
+              </div>
+            </div>
 
-                                </td>
-                                <td>
-                                    <%= value.Ma %>
-                                </td>
-                                <td>
-                                    <%= value.Mainboard %>
-                                </td>
-                                <td>
-                                    <%= value.RAM %>
-                                </td>
-                                <td>
-                                    <%= value.CPU %>
-                                </td>
-                                <td>
-                                    <%= value.HardDisk %>
-                                </td>
-                                <td>
-                                    <%= value.Monitor %>
-                                </td>
-                                <!-- <td>
+          </td>
+          <td>
+            <%= value.Ma %>
+          </td>
+          <td>
+            <%= value.Mainboard %>
+          </td>
+          <td>
+            <%= value.RAM %>
+          </td>
+          <td>
+            <%= value.CPU %>
+          </td>
+          <td>
+            <%= value.HardDisk %>
+          </td>
+          <td>
+            <%= value.Monitor %>
+          </td>
+          <!-- <td>
                                     <%= value.VideoCard %>
                                 </td> -->
-                                <td>
-                                    <%= value.OS %>
-                                </td>
-                                <td>
-                                    <%= value.BoPhan %>
-                                </td>
-                                <!-- <td>
+          <td>
+            <%= value.OS %>
+          </td>
+          <td>
+            <%= value.BoPhan %>
+          </td>
+          <!-- <td>
                                     <%= value.DeXuat %>
                                 </td> -->
-                               
-                                <td>
-                                    <%= value.Nguoidung %>
-                                </td>
-                                <td>
-                                    <%= value.Vitri %>
-                                </td>
-                                <td>
-                                    <%= value.Loai %>
-                                </td>
-                                <td>
-                                    <%= value.Notes %>
-                                </td>
 
-                            </tr>
+          <td>
+            <%= value.Nguoidung %>
+          </td>
+          <td>
+            <%= value.Vitri %>
+          </td>
+          <td>
+            <%= value.Loai %>
+          </td>
+          <td>
+            <%= value.Notes %>
+          </td>
 
-
-                            <% }) %>
+        </tr>
 
 
-                </tbody>
-            </table>
-        </div>
-        <!-- </div>
+        <% }) %>
+
+
+      </tbody>
+    </table>
+  </div>
+  <!-- </div>
     </div> -->
-    </div>
+</div>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ModalLabeldel">Bạn chắc chắn muốn xóa ?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Lựa chọn "DELETE" là chúng tôi sẽ xóa vĩnh viễn thiết bị ra khỏi database !!!</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-primary" type="button" id="btnxoathietbi" onclick="xoathietbi()">DELETE</button>
-          </div>
-        </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabeldel">Bạn chắc chắn muốn xóa ?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Lựa chọn "DELETE" là chúng tôi sẽ xóa vĩnh viễn thiết bị ra khỏi database !!!</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="button" id="btnxoathietbi" onclick="xoathietbi()">DELETE</button>
       </div>
     </div>
-        <!-- xxxxxxxxxxx -->
+  </div>
+</div>
+<!-- xxxxxxxxxxx -->
 
-        <div class="modal fade" id="logoutModal2" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel2">Bạn muốn sửa</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" id="sualabel2">#####</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <form action="searchedit" method="post">
-                            <input type="text" id="txtid" name="txtsearch" value="" hidden="true"/>
-                            <button class="btn btn-primary" type="button" id="btnsuathietbi" onclick="suathietbi()">SỬA</button>
-                            
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="modal fade" id="logoutModal2" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel2">Bạn muốn sửa</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" id="sualabel2">#####</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <form action="searchedit" method="post">
+          <input type="text" id="txtid" name="txtsearch" value="" hidden="true" />
+          <button class="btn btn-primary" type="button" id="btnsuathietbi" onclick="suathietbi()">SỬA</button>
 
-        <script>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-            // function Xoa(param) {
-            //     alert(param)
-            //     $.ajax({
-            //         method: "POST",
-            //         url: "/delete",
-            //         data: { Link: param }
-            //     })
-            //     .done(function (msg) {
-            //         alert("Chúng tôi đã xóa Link " + param)
-            //         window.location.href = "/thietbi"
-            //     });
-            // }
-            function Luu(bien, ma) {
-                _xoa = bien;
-                 $('#txtid').val(_xoa);
-                //alert(_xoa)
-                $('#ModalLabeldel').html('Bạn chắc chắn muốn xóa mã <strong>' + ma + "</strong> ?");
-            }
+<script>
+  // function Xoa(param) {
+  //     alert(param)
+  //     $.ajax({
+  //         method: "POST",
+  //         url: "/delete",
+  //         data: { Link: param }
+  //     })
+  //     .done(function (msg) {
+  //         alert("Chúng tôi đã xóa Link " + param)
+  //         window.location.href = "/thietbi"
+  //     });
+  // }
+  function Luu(bien, ma) {
+    _xoa = bien;
+    $('#txtid').val(_xoa);
+    //alert(_xoa)
+    $('#ModalLabeldel').html('Bạn chắc chắn muốn xóa mã <strong>' + ma + "</strong> ?");
+  }
 
-            function Sua(bien, ma) {
-                _xoa = bien;
-                //alert(_xoa);
-                $('#txtid').val(_xoa);
-                $('#ModalLabel2').html('Bạn muốn sửa thiết bị có mã: <strong>' + ma + "</strong>");
-                //$('#sualabel2').html("Sửa: " + _xoa);
-                //console.log(_xoa);
+  function Sua(bien, ma) {
+    _xoa = bien;
+    //alert(_xoa);
+    $('#txtid').val(_xoa);
+    $('#ModalLabel2').html('Bạn muốn sửa thiết bị có mã: <strong>' + ma + "</strong>");
+    //$('#sualabel2').html("Sửa: " + _xoa);
+    //console.log(_xoa);
 
-            }
-            function them(){
-                window.location.href = "/themthietbi"
-            }
-            function xoathietbi () { 
-                alert('Xoa thiet bi')
-             }
-            function suathietbi(){
-                
-                var id = $('#txtid').val()
-                // alert('Click ' + id)
-                window.location.href = "/suathietbi?id=" + id
-            }
-        </script>
+  }
+
+  function them() {
+    window.location.href = "/themthietbi"
+  }
+
+  function xoathietbi() {
+    $.ajax({
+        method: "POST",
+        url: "/xoathietbi",
+        data: {
+          id: $('#txtid').val()
+        }
+      })
+      .done(function(msg) {
+        alert(msg)
+        window.location.href = "/thietbi"
+      });
+  }
+
+  function suathietbi() {
+
+    var id = $('#txtid').val()
+    // alert('Click ' + id)
+    window.location.href = "/suathietbi?id=" + id
+  }id
+</script>

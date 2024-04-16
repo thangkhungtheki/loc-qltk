@@ -101,9 +101,11 @@
         <label>9.Loại/Type</label>
         <select class="custom-select" id="inputGroupSelect01" name="selectloai" required>
           <option value='<%= data.Loai %>' selected disabled hidden><%= data.Loai %></option>
-          <option value="Desktop-Máy lắp ráp">Desktop-Máy lắp ráp</option>
-          <option value="Desktop-Máy bộ">Desktop-Máy bộ</option>
-          <option value="Laptop">Laptop</option>
+          <option value="Desktop-New">Desktop-New</option>
+          <option value="Desktop-Old">Desktop-Old</option>
+          <option value="Laptop-New">Laptop-New</option>
+          <option value="Laptop-Old">Laptop-Old</option>
+          <option value="Nhập lại từ kho">Nhập lại từ kho</option>
         </select>
       </div>
       <div class="form-group col-md-6">
@@ -181,7 +183,7 @@
     </div>
     
     <div>
-      <!-- <input type="text" id="idma" name="txtma" hidden="true" /> -->
+      <input type="text" id="idmathietbi" name="txtmatb" hidden="true" value="<%= data._id %>"/>
     </div>
   </form>
 </div>

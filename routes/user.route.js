@@ -227,6 +227,26 @@ router
         morong: ''
         
     }
+    let id = req.body.txtmatb
+    //console.log(id)
+    const result = await xulydb.updatetb(id, doc)
+    if(result){
+        res.redirect('/suathietbi?id=' + id)
+    }else{
+        res.send('Lỗi server, ko update được')
+    }
+    
+})
+
+router.post('/xoathietbi', async (req, res)=> {
+    let id = req.body.id
+    // console.log(id)
+    const result = await xulydb.xoathietbi(id)
+    if(result){
+        res.send('Delete success')
+    }else{
+        res.send('Unknown Error')
+    }
 })
 // ----- ---------------- ----
 

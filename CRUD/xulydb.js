@@ -83,9 +83,9 @@ async function xoaTbdp2(_tb){
     
 }
 
-async function updatetb(ma, doc){
+async function updatetb(id, doc){
     try{
-        await _thietbi.updateOne({Ma: ma},doc)
+        await _thietbi.findByIdAndUpdate(id, doc)
         return true
     }catch(e){
         return false
@@ -256,9 +256,9 @@ async function create_device(doc){
         return false
     }
 }
-async function delete_device(_id){
+async function xoathietbi(_id){
     try {
-        await _device.deleteOne({_id: _id})
+        await _thietbi.deleteOne({_id: _id})
         return true
     } catch (error) {
         return error
@@ -297,5 +297,6 @@ module.exports = {
     timTb,
     updatetb,
     themtb,
-    xoaUser
+    xoaUser,
+    xoathietbi
 }
