@@ -10,13 +10,13 @@ const fs = require('fs')
 
 //sendmail.sendmail()
 
-router.get('/cronjobsendmail',async(req, res) => {
-    var data =  await xulydb.doc_createthietbi()
-    var newdata = await tinhngayconlai(data)
-    sendmail.sendmail(newdata)
-    res.status(200).send('ok');
+// router.get('/cronjobsendmail',async(req, res) => {
+//     var data =  await xulydb.doc_createthietbi()
+//     var newdata = await tinhngayconlai(data)
+//     sendmail.sendmail(newdata)
+//     res.status(200).send('ok');
 
-})
+// })
 
 router.get("/", (req, res, next) => {
     res.redirect("/signin")
