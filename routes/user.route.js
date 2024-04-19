@@ -7,6 +7,7 @@ var moment = require('moment')
 // const sendmail = require('../sendmail/sendmail')
 const exceljs = require('exceljs');
 const fs = require('fs')
+const { header } = require("express-validator")
 
 //sendmail.sendmail()
 
@@ -418,5 +419,24 @@ router.get('/backupdatabase', async (req, res) => {
         
 //     })
 // })
+
+router.get('/printgiayracong', (req, res) => {
+    let data = {
+        congtacA :'',
+        congtacB : "X",
+        ngay: '19-04-2024',
+        bophan: 'Bộ phận gì đó',
+        headcount: 'AMATA- CAI GI DO',
+        time: '10h40',
+        name: 'Nguyen Van A',
+        lydo: 'It is a long established fact that a reader will be distracted by the readable content of'
+    }
+    res.render('docs/giayracong', {data: data})
+    // res.render('docs/testgiayracong')
+})
+
+router.get('/printtext', (req, res) => {
+    res.render('docs/giayracong')
+})
 
 module.exports = router
