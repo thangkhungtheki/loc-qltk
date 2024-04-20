@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="form-group col-md-12 h4" style="color: rgb(61, 158, 31);">
+    IN GIẤY RA CỔNG
+  </div>
+  <form action="/printgiayracong" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label>1.Họ & Tên </label>
+        <input class="form-control" type="text" value="" name="txthoten" required>
+    </div>
+     <div class="form-group col-md-6">
+      <label>2.Loại Công Tác </label>
+      <select class="custom-select" id="inputGroupSelectheadcount" name="selectloaict" required>
+        <option value='' selected disabled hidden>Chọn loại công tác ...</option>
+        <option value="1">Business/Công tác</option>
+        <option value="2">Personal/Việc riêng</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>3.Ngày/date </label>
+      <input class="form-control" type="date" value="" name="txtngay" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>4.Time </label>
+      <input class="form-control" type="time" name="txttime" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>5.Headcount</label>
+      <select class="custom-select" id="inputGroupSelectheadcount" name="selectheadcount" required>
+        <option value='' selected disabled hidden>Chọn Headcount ...</option>
+        <option value="UPL Vietnam/ Bien Hoa (Amata)">UPL Vietnam/ Bien Hoa (Amata)</option>
+        <option value="UPL Vietnam/ HCMc (District 7)">UPL Vietnam/ HCMc (District 7)</option>
+        <option value="UPL Vietnam / Ha Noi">UPL Vietnam / Ha Noi</option>
+        <option value="UPL Vietnam / Binh Dinh (Closed)">UPL Vietnam / Binh Dinh (Closed)</option>
+        <option value="UPL Vietnam / Can Tho">UPL Vietnam / Can Tho</option>
+        <option value="AvantaSeed Vietnam / Long An">AvantaSeed Vietnam / Long An</option>
+        <option value="Arysta Vietnam / Binh Duong">Arysta Vietnam / Binh Duong</option>
+        <option value="UPL Global (India,Indonesia, Japan ..ect)">UPL Global (India,Indonesia, Japan ..ect)</option>
+        <option value="Site khác (Other sites)">Site khác (Other sites)</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label>6.Bộ phận</label>
+      <select class="custom-select" id="inputGroupSelect01" name="selectbophan" required>
+        <option value='' selected disabled hidden>Chọn Bộ Phận ...</option>
+        <option value="Sản Xuất-Herbicide 1">Sản Xuất-Herbicide 1</option>
+        <option value="Sản Xuất-Herbicide 2">Sản Xuất-Herbicide 2</option>
+        <option value="Sản Xuất-Herbicide 3">Sản Xuất-Herbicide 3</option>
+        <option value="Sản Xuất-Herbicide 4">Sản Xuất-Herbicide 4</option>
+        <option value="Sản Xuất-Herbicide 5">Sản Xuất-Herbicide 5</option>
+        <option value="Sản Xuất-Insecticide 1">Sản Xuất-Insecticide 1</option>
+        <option value="Sản Xuất-Insecticide 2">Sản Xuất-Insecticide 2</option>
+        <option value="Sản Xuất-Insecticide 3">Sản Xuất-Insecticide 3</option>
+        <option value="Sản Xuất-Insecticide 4">Sản Xuất-Insecticide 4</option>
+        <option value="Sản Xuất-Rewinder 1">Sản Xuất-Rewinder 1</option>
+        <option value="Sản Xuất-Rewinder 2">Sản Xuất-Rewinder 2</option>
+        <option value="Sản Xuất-Rewinder 3">Sản Xuất-Rewinder 3</option>
+        <option value="Sản Xuất-Rewinder 4">Sản Xuất-Rewinder 4</option>
+        <option value="Sản Xuất-SC-Scada">Sản Xuất-SC-Scada</option>
+        <option value="Sản Xuất-Powder 1">Sản Xuất-Powder 1</option>
+        <option value="Sản Xuất-Powder 2">Sản Xuất-Powder 2</option>
+        <option value="Sản Xuất-Grand 1">Sản Xuất-Grand 1</option>
+        <option value="Sản Xuất-Grand 2">Sản Xuất-Grand 2</option>
+        <option value="QC-QA : Bộ phận kiểm soát chất lượng">QC-QA : Bộ phận kiểm soát chất lượng</option>
+        <option value="QA-Đảm bảo chất lượng">QA-Đảm bảo chất lượng</option>
+        <option value="QC-Kiểm soát chất lượng">QC-Kiểm soát chất lượng</option>
+        <option value="HR-Nhân sự">HR-Nhân sự</option>
+        <option value="HR-Admin : Nhân sự & Hành chánh">HR-Admin : Nhân sự & Hành chánh</option>
+        <option value="Admin-Hành chánh ">Admin-Hành chánh </option>
+        <option value="Accounting-Kế toán">Accounting-Kế toán</option>
+        <option value="Import & Export-Xuất nhập khẩu">Import & Export-Xuất nhập khẩu</option>
+        <option value="Safety/HSE-An toàn">Safety/HSE-An toàn</option>
+        <option value="PCCC-Phòng cháy chữa cháy ">PCCC-Phòng cháy chữa cháy </option>
+        <option value="Maintenace-Bảo trì ">Maintenace-Bảo trì </option>
+        <option value="IT-Công nghệ thông tin">IT-Công nghệ thông tin</option>
+        <option value="Warehouse-Kho">Warehouse-Kho</option>
+        <option value="Planning-Kế hoạch">Planning-Kế hoạch</option>
+        <option value="Purchasing-Mua hàng">Purchasing-Mua hàng</option>
+        <option value="BoD-Ban giám đốc">BoD-Ban giám đốc</option>
+        <option value="Trợ lý">Trợ lý</option>
+        <option value="Legal-Pháp lý/Pháp chế ">Legal-Pháp lý/Pháp chế </option>
+        <option value="Dự Án/Điều phối">Dự Án/Điều phối</option>
+        <option value="Production-Sản xuất chung">Production-Sản xuất chung</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>7.Lý do/reason </label>
+      <input class="form-control" type="text" name="txtlydo" required>
+    </div>
+  </div>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+        <button class="btn btn-primary float-left" type="submit" id="btningiay" >IN GIẤY RA CỔNG</button>
+      </div>
+    </div>
+    </form>
+</div>
+<script>
+    
+</script>

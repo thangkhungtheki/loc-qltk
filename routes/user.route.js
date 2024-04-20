@@ -420,23 +420,32 @@ router.get('/backupdatabase', async (req, res) => {
 //     })
 // })
 
-router.get('/printgiayracong', (req, res) => {
+router.post('/printgiayracong', (req, res) => {
+    var congtacA = ''
+    var congtacB = ''
+    if(req.body.selectloaict == '1'){
+        congtacA = 'X'
+    }else{
+        congtacB = 'X'
+    }
     let data = {
-        congtacA :'',
-        congtacB : "X",
-        ngay: '19-04-2024',
-        bophan: 'Bộ phận gì đó',
-        headcount: 'AMATA- CAI GI DO',
-        time: '10h40',
-        name: 'Nguyen Van A',
-        lydo: 'It is a long established fact that a reader will be distracted by the readable content of'
+        congtacA : congtacA,
+        congtacB : congtacB,
+        ngay: req.body.txtngay,
+        bophan: req.body.selectbophan,
+        headcount: req.body.selectheadcount,
+        time: req.body.txttime,
+        name: req.body.txthoten,
+        lydo: req.body.txtlydo
     }
     res.render('docs/giayracong', {data: data})
     // res.render('docs/testgiayracong')
 })
 
-router.get('/printtext', (req, res) => {
-    res.render('docs/giayracong')
+router.get('/giayracong', (req, res) => {
+    res.render('mainSbAdmin/ingiayracong',{
+        _username: ''
+    })
 })
 
 module.exports = router
