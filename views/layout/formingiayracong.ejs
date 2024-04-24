@@ -2,7 +2,7 @@
   <div class="form-group col-md-12 h4" style="color: rgb(61, 158, 31);">
     IN GIẤY RA CỔNG
   </div>
-  <form action="/printgiayracong" method="post">
+  <form id="formin" action="/printgiayracong" method="get">
   <div class="form-row">
     <div class="form-group col-md-6">
         <label>1.Họ & Tên </label>
@@ -102,5 +102,19 @@
     </form>
 </div>
 <script>
-    
+    document.getElementById("formin").addEventListener("submit", function(event) {
+    // Ngăn chặn form gửi đi mặc định
+    event.preventDefault();
+
+    // Lấy giá trị từ các trường form nếu cần
+    var formData = new FormData(this);
+
+    // Gửi dữ liệu đến backend endpoint bằng cách thay đổi action của form
+    // (hoặc sử dụng XMLHttpRequest hoặc Fetch API)
+    // this.action = "/your-backend-endpoint";
+
+    // Mở tab mới
+    window.open(this.action + "?" + new URLSearchParams(formData).toString(), '_blank');
+});
+
 </script>

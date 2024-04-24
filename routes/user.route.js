@@ -420,10 +420,10 @@ router.get('/backupdatabase', async (req, res) => {
 //     })
 // })
 
-router.post('/printgiayracong', (req, res) => {
+router.get('/printgiayracong', (req, res) => {
     var congtacA = ''
     var congtacB = ''
-    if(req.body.selectloaict == '1'){
+    if(req.query.selectloaict == '1'){
         congtacA = 'X'
     }else{
         congtacB = 'X'
@@ -431,12 +431,12 @@ router.post('/printgiayracong', (req, res) => {
     let data = {
         congtacA : congtacA,
         congtacB : congtacB,
-        ngay: req.body.txtngay,
-        bophan: req.body.selectbophan,
-        headcount: req.body.selectheadcount,
-        time: req.body.txttime,
-        name: req.body.txthoten,
-        lydo: req.body.txtlydo
+        ngay: req.query.txtngay,
+        bophan: req.query.selectbophan,
+        headcount: req.query.selectheadcount,
+        time: req.query.txttime,
+        name: req.query.txthoten,
+        lydo: req.query.txtlydo
     }
     res.render('docs/giayracong', {data: data})
     // res.render('docs/testgiayracong')
