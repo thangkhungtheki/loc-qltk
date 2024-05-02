@@ -448,4 +448,14 @@ router.get('/giayracong', (req, res) => {
     })
 })
 
+router.get('/baocao', (req, res) => {
+    let motacongviec = 'toi\n là \n 1 con người \n hoàn chỉnh'
+    let fixmotacongviec = motacongviec.replace(/\n/g, '<br>')
+    let data = {
+        motacongviec: fixmotacongviec,
+        ketquacongviec: `1. Kết quả thứ nhất <br> 2. Kết quả thứ 2 <br> 3. Kết quả thứ 3`
+    }
+    res.render('docs/report', {data: data ? data : null})
+})
+
 module.exports = router
