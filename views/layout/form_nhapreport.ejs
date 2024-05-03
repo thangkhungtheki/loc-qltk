@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="form-row">
+    <div class="form-group col-md-12 h4" style="color: blue;">
+      NHẬP REPORT (ADD NEW REPORT)
+    </div>
+  </div>
+  <% if (expressFlash.length > 0) { %>
+
+  <div style="color: green; align-items: center;">
+    <%= expressFlash %>
+  </div>
+
+  <% } else { %>
+  <div style="color: rgb(209, 7, 24); align-items: center;">
+    <%= expressFlasheror %>
+  </div>
+  <% } %>
+
+  <form action="#" method="post">
+    <div class="form-row">
+      <span class="muc1">A.Thông tin người report </span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>1.Họ & Tên </label>
+
+        <input class="form-control" type="text" placeholder="Họ Tên" name='name' id="txtname" value="" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label>2.Phone </label>
+        <input class="form-control" type="text" placeholder="Phone" value="" name="phone" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>3.Email </label>
+        <input class="form-control" type="email" placeholder="Email" value="" name="email" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>4.Report Date </label>
+        <input class="form-control" type="text" placeholder="Report Date" value="" name="rpdate" required>
+      </div>
+    </div>
+    <hr class="hr" />
+    <div class="form-row">
+      <span class="muc1">B.Thông tin người nhận báo cáo</span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>5.To Name</label>
+        <input class="form-control" type="text" placeholder="To Name" value="" name="toname" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>6.Company</label>
+        <input class="form-control" type="text" placeholder="company" value="" name="company" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>7.Address company</label>
+        <input class="form-control" type="text" placeholder="Address company" value="" name="addcom" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>8.SoW</label>
+        <input class="form-control" type="text" placeholder="SoW" value="" name="sowork" required>
+      </div>
+    </div>
+    <hr class="hr" />
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>9.Detailed Report Information (Chi tiết công việc) :</label>
+        <textarea class="form-control" rows="5" cols="50" name="motacongviec" id="textareadx" type="text"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label>10.Issues/ Comments Kết quả công việc</label>
+        <textarea class="form-control" rows="5" cols="50" name="ketquacongviec" id="textareadx" type="text"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>11.NBD Detailed Report Information: (Chi tiết công việc của ngày tiếp theo)	</label>
+        <textarea class="form-control" rows="5" cols="50" name="motacongviectieptheo" id="textareadx" type="text"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label>12.Solutions/ Suggestions</label>
+        <textarea class="form-control" rows="5" cols="50" name="ketquacongviectieptheo" id="textareadx" type="text"></textarea>
+      </div>
+    </div>
+    <hr class="hr" />
+
+    <div class="form-row">
+      <span class="muc1">C.Project Engineers Information:</span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>13.Engineers Name</label>
+        <input class="form-control" type="text" placeholder="Engineers Name" value="" name="tenkysu" >
+      </div>
+      <div class="form-group col-md-6">
+        <label>14.Time</label>
+        <input class="form-control" type="text" placeholder="time (sáng) chiều" value="" name="time" >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>15.Overtime Tasks Description</label>
+        <input class="form-control" type="text" placeholder="" value="" name="motatangca" >
+      </div>
+      <div class="form-group col-md-6">
+        <label>16.OT Start - End</label>
+        <input class="form-control" type="text" placeholder="" value="" name="otstartend" >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <button class="btn btn-secondary float-left" type="reset" id="btnreset">XOÁ</button>
+        <button class="btn btn-primary float-right" type="submit" id="btncapnhat">LƯU DB</button>
+
+      </div>
+    </div>
+    
+    <div>
+      <!-- <input type="text" id="idma" name="txtma" hidden="true" /> -->
+    </div>
+  </form>
+</div>
+<style>
+  .muc1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: larger;
+  }
+</style>
+

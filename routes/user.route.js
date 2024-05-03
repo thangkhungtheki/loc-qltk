@@ -458,4 +458,12 @@ router.get('/baocao', (req, res) => {
     res.render('docs/report', {data: data ? data : null})
 })
 
+
+router.get('/nhapreport', (req, res) => {
+    res.render('mainSbAdmin/reportmain', {
+        _username: '',
+        expressFlash: req.flash('success') ,
+        expressFlasheror: req.flash('error')
+    })
+})
 module.exports = router
