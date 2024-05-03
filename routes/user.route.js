@@ -7,7 +7,7 @@ var moment = require('moment')
 // const sendmail = require('../sendmail/sendmail')
 const exceljs = require('exceljs');
 const fs = require('fs')
-const { header } = require("express-validator")
+const xulyreport = require('../CRUD/xlreport')
 
 //sendmail.sendmail()
 
@@ -448,14 +448,42 @@ router.get('/giayracong', (req, res) => {
     })
 })
 
-router.get('/baocao', (req, res) => {
-    let motacongviec = 'toi\n là \n 1 con người \n hoàn chỉnh'
-    let fixmotacongviec = motacongviec.replace(/\n/g, '<br>')
-    let data = {
-        motacongviec: fixmotacongviec,
-        ketquacongviec: `1. Kết quả thứ nhất <br> 2. Kết quả thứ 2 <br> 3. Kết quả thứ 3`
+router.get('/baocao', async(req, res) => {
+    let id = req.query.id
+    let doc = await xulyreport.id_report(id)
+    if(doc){
+        let fixmotacongviec = doc.motacongviec.replace(/\n/g, '<br>')
+        let fixketquacongviec = doc.ketquacongviec.replace(/\n/g, '<br>')
+        let fixmotacongviectieptheo = doc.motacongviectieptheo.replace(/\n/g, '<br>')
+        let fixketquacongviectieptheo = doc.ketquacongviectieptheo.replace(/\n/g, '<br>')
+        let data = {
+            motacongviec: fixmotacongviec,
+            ketquacongviec: fixketquacongviec,
+            motacongviectieptheo: fixmotacongviectieptheo,
+            ketquacongviectieptheo: fixketquacongviectieptheo,
+            name: doc.name,
+            phone: doc.phone,
+            email: doc.email,
+            rpdate: doc.rpdate,
+            toname: doc.toname,
+            company: doc.company,
+            addcom: doc.addcom,
+            sowork: doc.sowork,
+            tenkysu: doc.tenkysu || '',
+            time: doc.time || '',
+            motatangca: doc.motatangca || '',
+            otstartend: doc.otstartend || ''
+        }
+        // res.send(doc)
+        return res.render('docs/report', {data: data ? data : null})
     }
-    res.render('docs/report', {data: data ? data : null})
+    // let motacongviec = 'toi\n là \n 1 con người \n hoàn chỉnh'
+    // let fixmotacongviec = motacongviec.replace(/\n/g, '<br>')
+    // let data = {
+    //     motacongviec: fixmotacongviec,
+    //     ketquacongviec: `1. Kết quả thứ nhất <br> 2. Kết quả thứ 2 <br> 3. Kết quả thứ 3`
+    // }
+    // res.render('docs/report', {data: data ? data : null})
 })
 
 
@@ -466,4 +494,43 @@ router.get('/nhapreport', (req, res) => {
         expressFlasheror: req.flash('error')
     })
 })
+
+router.post('/themreport', async (req, res) => {
+    let doc = {
+        motacongviec: req.body.motacongviec,
+        ketquacongviec: req.body.ketquacongviec,
+        motacongviectieptheo: req.body.motacongviectieptheo,
+        ketquacongviectieptheo: req.body.ketquacongviectieptheo,
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        rpdate: req.body.rpdate,
+        toname: req.body.toname,
+        company: req.body.company,
+        addcom: req.body.addcom,
+        sowork: req.body.sowork,
+        tenkysu: req.body.tenkysu,
+        time: req.body.time,
+        motatangca: req.body.motatangca,
+        otstartend: req.body.otstartend
+    }
+    const result = await xulyreport.create_report(doc)
+    if(result){
+        req.flash('success', 'Dữ liệu đã lưu thành công !!!.')
+    }else{
+        req.flash('error', 'Lỗi server hoặc nhập ko chính xác !!!.')
+    }
+    return res.redirect("/nhapreport")    
+    
+
+})
+
+router.get('/xembangreport', async(req, res) => {
+    let docs = await xulyreport.doc_report()
+    return res.render('mainSbAdmin/dashboard_report', {
+        _username: '',
+        data: docs
+    })
+})
+
 module.exports = router

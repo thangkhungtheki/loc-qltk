@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form-row">
-    <div class="form-group col-md-12 h4" style="color: blue;">
-      NHẬP REPORT (ADD NEW REPORT)
+    <div class="form-group col-md-12 h4" style="color: red;">
+      Báo Cáo Công Việc Hàng Ngày (Add: Daily Report)
     </div>
   </div>
   <% if (expressFlash.length > 0) { %>
@@ -16,7 +16,7 @@
   </div>
   <% } %>
 
-  <form action="#" method="post">
+  <form action="themreport" method="post">
     <div class="form-row">
       <span class="muc1">A.Thông tin người report </span>
     </div>
@@ -38,7 +38,7 @@
       </div>
       <div class="form-group col-md-6">
         <label>4.Report Date </label>
-        <input class="form-control" type="text" placeholder="Report Date" value="" name="rpdate" required>
+        <input class="form-control" type="date" value="" name="rpdate" required>
       </div>
     </div>
     <hr class="hr" />

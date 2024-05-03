@@ -23,34 +23,34 @@
     <tbody>
         <tr>
             <td class="left-column">
-                Reporter: Lộc, Phan Tấn
+                Reporter: <%= data.name %>
             </td>
             <td class="right-column">
-                To: Mr Hiệp
+                To: <%= data.toname %>
             </td>
         </tr>
         <tr>
             <td class="left-column">
-                Phone No: 0933757326 
+                Phone No: <%= data.phone %> 
             </td>
             <td class="right-column">
-                Company: UPL Vietnam
+                Company: <%= data.company %>
             </td>
         </tr>
         <tr>
             <td class="left-column">
-                Email: loc.pt@ventech-asia.com 
+                Email: <%= data.email %>
             </td>
             <td class="right-column">
-                Add: Đường 11 Amata, KCN Long Bình, Phường Long Bình, Thành phố Biên Hoà, ĐN
+                Add: <%= data.addcom %>
             </td>
         </tr>
         <tr>
             <td class="left-column">
-                RP Date: 16/08/2022 to 19/08/2022
+                RP Date: <%= data.rpdate %>
             </td>
             <td class="right-column">
-                SoW:: IT Onsite
+                SoW:: <%= data.sowork %>
             </td>
         </tr>
     </tbody>
@@ -82,7 +82,7 @@
             <%- data.motacongviec %>
         </td>
         <td class="dongke">
-            <%= data.ketquacongviec %>
+            <%- data.ketquacongviec %>
         </td>
 
     </tr>
@@ -110,20 +110,10 @@
       </tr>
       <tr>
         <td class="dongke">
-            1. cong viec <br />
-            2. cong viec <br />
-            3. cong viec <br />
-            4. cong viec <br />
-            5. cong viec <br />
-            6. cong viec <br />
+          <%- data.motacongviectieptheo %>
         </td>
         <td class="dongke">
-            1. cong viec <br />
-            2. cong viec <br />
-            3. cong viec <br />
-            4. cong viec <br />
-            5. cong viec <br />
-            6. cong viec <br />
+          <%- data.ketquacongviectieptheo %>
         </td>
 
     </tr>
