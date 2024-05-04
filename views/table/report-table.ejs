@@ -17,6 +17,7 @@
           <thead>
             <tr class="table-success">
               <th>Control</th>
+              <th>Ngày</th>
               <th>name</th>
               <th>toname</th>
               <th>company</th>
@@ -25,6 +26,7 @@
           <tfoot>
             <tr class="table-success">
               <th>Control</th>
+              <th>Ngày</th>
               <th>name</th>
               <th>toname</th>
               <th>company</th>
@@ -51,6 +53,9 @@
                   </div>
                 </div>
 
+              </td>
+              <td>
+                <%= value.rpdate %>
               </td>
               <td>
                 <%= value.name %>
@@ -160,14 +165,14 @@
   function xoathietbi() {
     $.ajax({
         method: "POST",
-        url: "/xoathietbi",
+        url: "/xoareport",
         data: {
           id: $('#txtid').val()
         }
       })
       .done(function(msg) {
         alert(msg)
-        window.location.href = "/thietbi"
+        window.location.href = "/xembangreport"
       });
   }
 
@@ -175,11 +180,11 @@
 
     var id = $('#txtid').val()
     // alert('Click ' + id)
-    window.location.href = "/suathietbi?id=" + id
+    window.location.href = "/" + id
   }
 
   function xuatexcel() {
-    window.location.href = '/chuyenexcel'
+    // window.location.href = '/chuyenexcel'
   }
 </script>
 <!-- Page level plugins -->

@@ -533,4 +533,14 @@ router.get('/xembangreport', async(req, res) => {
     })
 })
 
+router.post('/xoareport', async(req, res)=>{
+    let id = req.body.id
+    let result = await xulyreport.del_report(id)
+    if(result){
+        return res.send('Đã Xoá Thành Công')
+    }else{
+        return res.end()
+    }
+})
+
 module.exports = router
