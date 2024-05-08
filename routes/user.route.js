@@ -456,6 +456,7 @@ router.get('/baocao', async(req, res) => {
         let fixketquacongviec = doc.ketquacongviec.replace(/\n/g, '<br>')
         let fixmotacongviectieptheo = doc.motacongviectieptheo.replace(/\n/g, '<br>')
         let fixketquacongviectieptheo = doc.ketquacongviectieptheo.replace(/\n/g, '<br>')
+        let fixtoname = doc.toname.replace(/\n/g, '<br>')
         let data = {
             motacongviec: fixmotacongviec,
             ketquacongviec: fixketquacongviec,
@@ -465,7 +466,7 @@ router.get('/baocao', async(req, res) => {
             phone: doc.phone,
             email: doc.email,
             rpdate: doc.rpdate,
-            toname: doc.toname,
+            toname: fixtoname,
             company: doc.company,
             addcom: doc.addcom,
             sowork: doc.sowork,
