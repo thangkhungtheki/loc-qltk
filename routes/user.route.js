@@ -544,4 +544,62 @@ router.post('/xoareport', async(req, res)=>{
     }
 })
 
+router.get('/suareport' , async(req, res) => {
+    let id = req.query.id
+    let result =  await xulyreport.id_report(id)
+    if(result){
+        return res.render('mainSBAdmin/sua_report_dasboard', {
+            _username: '',
+            data : result,
+            expressFlash: req.flash('success') ,
+            expressFlasheror: req.flash('error')
+        })
+    }else{
+        return res.end()
+    }
+
+})
+
+router.post('/suareport', async (req, res) => {
+    let id = req.body.txtma
+    let doc = {
+        motacongviec: req.body.motacongviec,
+        ketquacongviec: req.body.ketquacongviec,
+        motacongviectieptheo: req.body.motacongviectieptheo,
+        ketquacongviectieptheo: req.body.ketquacongviectieptheo,
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        rpdate: req.body.rpdate,
+        toname: req.body.toname,
+        company: req.body.company,
+        addcom: req.body.addcom,
+        sowork: req.body.sowork,
+        tenkysu: req.body.tenkysu,
+        time: req.body.time,
+        motatangca: req.body.motatangca,
+        otstartend: req.body.otstartend
+    }
+    // console.log(id)
+    // console.log(doc)
+    let result = await xulyreport.update_report(id, doc)
+    if(result){
+        req.flash('success','Update thành công')
+        return res.render('mainSBAdmin/sua_report_dasboard', {
+            _username: '',
+            data : doc,
+            expressFlash: req.flash('success') ,
+            expressFlasheror: req.flash('error')
+        })
+    }else{
+        req.flash('error','Lỗi hệ thống')
+        return res.render('mainSBAdmin/sua_report_dasboard', {
+            _username: '',
+            data : doc,
+            expressFlash: req.flash('success') ,
+            expressFlasheror: req.flash('error')
+        })
+    }
+})
+
 module.exports = router

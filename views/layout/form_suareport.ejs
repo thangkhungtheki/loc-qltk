@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="form-row">
+    <div class="form-group col-md-12 h4" style="color: rgb(21,93,162);">
+      Sửa - Báo Cáo Công Việc Hàng Ngày (Add: Daily Report)
+    </div>
+  </div>
+  <% if (expressFlash.length > 0) { %>
+
+  <div style="color: green; align-items: center;">
+    <%= expressFlash %>
+  </div>
+
+  <% } else { %>
+  <div style="color: rgb(209, 7, 24); align-items: center;">
+    <%= expressFlasheror %>
+  </div>
+  <% } %>
+
+  <form action="suareport" method="post">
+    <div class="form-row">
+      <span class="muc1">A.Thông tin người report </span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>1.Họ & Tên </label>
+
+        <input class="form-control" type="text" placeholder="Họ Tên" name='name' id="txtname" value="<%= data.name %>" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label>2.Phone </label>
+        <input class="form-control" type="text" placeholder="Phone" value="<%= data.phone %>" name="phone" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>3.Email </label>
+        <input class="form-control" type="email" placeholder="Email" value="<%= data.email %>" name="email" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>4.Report Date </label>
+        <input class="form-control" type="date" value="<%= data.rpdate %>" name="rpdate" required>
+      </div>
+    </div>
+    <hr class="hr" />
+    <div class="form-row">
+      <span class="muc1">B.Thông tin người nhận báo cáo</span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>5.To Name</label>
+        <input class="form-control" type="text" placeholder="To Name" value="<%= data.toname %>" name="toname" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>6.Company</label>
+        <input class="form-control" type="text" placeholder="company" value="<%= data.toname %>" name="company" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>7.Address company</label>
+        <input class="form-control" type="text" placeholder="Address company" value="<%= data.addcom %>" name="addcom" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>8.SoW</label>
+        <input class="form-control" type="text" placeholder="SoW" value="<%= data.sowork %>" name="sowork" required>
+      </div>
+    </div>
+    <hr class="hr" />
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>9.Detailed Report Information (Chi tiết công việc) :</label>
+        <textarea class="form-control" rows="5" cols="50" name="motacongviec" id="textareadx" type="text"><%= data.motacongviec %></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label>10.Issues/ Comments Kết quả công việc</label>
+        <textarea class="form-control" rows="5" cols="50" name="ketquacongviec" id="textareadx" type="text"><%= data.ketquacongviec %></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>11.NBD Detailed Report Information: (Chi tiết công việc của ngày tiếp theo) </label>
+        <textarea class="form-control" rows="5" cols="50" name="motacongviectieptheo" id="textareadx" type="text"><%= data.motacongviectieptheo %></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label>12.Solutions/ Suggestions</label>
+        <textarea class="form-control" rows="5" cols="50" name="ketquacongviectieptheo" id="textareadx" type="text"><%= data.ketquacongviectieptheo %></textarea>
+      </div>
+    </div>
+    <hr class="hr" />
+
+    <div class="form-row">
+      <span class="muc1">C.Project Engineers Information:</span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>13.Engineers Name</label>
+        <input class="form-control" type="text" placeholder="Engineers Name" value="<%= data.tenkysu %>" name="tenkysu">
+      </div>
+      <div class="form-group col-md-6">
+        <label>14.Time</label>
+        <input class="form-control" type="text" placeholder="time (sáng) chiều" value="<%= data.time %>" name="time">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>15.Overtime Tasks Description</label>
+        <input class="form-control" type="text" placeholder="" value="<%= data.motatangca %>" name="motatangca">
+      </div>
+      <div class="form-group col-md-6">
+        <label>16.OT Start - End</label>
+        <input class="form-control" type="text" placeholder="" value="<%= data.otstartend %>" name="otstartend">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <input class="form-control" id="idma" name="txtma" value = '<%= data.id %>' readonly/>
+      </div>
+    </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <a class="btn btn-secondary float-left" href="/xembangreport" role="button">XEM BẢNG BÁO CÁO</a>
+          <button class="btn btn-primary float-right" type="submit" id="btncapnhatsua">UPDATE DB</button>
+        </div>
+      </div>
+
+      <div>
+        <!-- <input type="text" id="idma" name="txtma" hidden="true" /> -->
+      </div>
+  </form>
+</div>
+<style>
+  .muc1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: larger;
+  }
+</style>

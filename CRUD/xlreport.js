@@ -29,9 +29,19 @@ async function del_report(id){
     }
 }
 
+async function update_report(id, doc){
+    try{
+        await _report.findByIdAndUpdate(id , doc)
+        return true
+    }catch(e){
+        return false
+    }
+}
+
 module.exports = {
     create_report,
     doc_report,
     id_report,
-    del_report
+    del_report,
+    update_report
 }
