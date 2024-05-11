@@ -128,6 +128,30 @@ router.get('/thietbi', authenticated, async(req, res) => {
     
     
         var data = await xulydb.docTb()
+        let tongthietbi = data.length
+        let tonglaptopdangdung = 0
+        let tongdesktopdangdung = 0
+        let thietbiluukho = 0
+        
+        for (let i = 0; i<tongthietbi; i++){
+            
+            if(data[i].Loai.match(/laptop-new/i) && data[i].tinhtrang == 'Đang sử dụng'|| data[i].Loai.match(/laptop-old/i) && data[i].tinhtrang == 'Đang sử dụng'){
+                tonglaptopdangdung ++
+            }else if(data[i].Loai.match(/desktop-new/i) && data[i].tinhtrang == 'Đang sử dụng' || data[i].Loai.match(/desktop-old/i) && data[i].tinhtrang == 'Đang sử dụng'){
+                tongdesktopdangdung ++
+            }else if(data[i].tinhtrang == 'Lưu kho'){
+                thietbiluukho ++
+            }else{
+
+            }
+        }
+        let solieu = {
+            tongthietbi: tongthietbi,
+            tonglaptopdangdung: tonglaptopdangdung,
+            tongdesktopdangdung: tongdesktopdangdung,
+            thietbiluukho: thietbiluukho
+        }
+        // console.log(solieu)
         // console.log(data)
             res.render("mainSbAdmin/dbthietbi",{
             _username: req.user.username,
@@ -135,10 +159,12 @@ router.get('/thietbi', authenticated, async(req, res) => {
             activeuser: '',
             activetb: 'active',
             activetbdp2: '',
+            solieu: solieu
         })
     
 
 })
+
 // --------------- Du an moi ---------------
 router.get("/themthietbi", authenticated, (req, res) => {
     
@@ -457,6 +483,9 @@ router.get('/baocao', async(req, res) => {
         let fixmotacongviectieptheo = doc.motacongviectieptheo.replace(/\n/g, '<br>')
         let fixketquacongviectieptheo = doc.ketquacongviectieptheo.replace(/\n/g, '<br>')
         let fixtoname = doc.toname.replace(/\n/g, '<br>')
+        let fixcompany = doc.company.replace(/\n/g, '<br>')
+        let fixaddcom = doc.addcom.replace(/\n/g, '<br>')
+        let fixsowork = doc.sowork.replace(/\n/g, '<br>')
         let data = {
             motacongviec: fixmotacongviec,
             ketquacongviec: fixketquacongviec,
@@ -467,9 +496,9 @@ router.get('/baocao', async(req, res) => {
             email: doc.email,
             rpdate: doc.rpdate,
             toname: fixtoname,
-            company: doc.company,
-            addcom: doc.addcom,
-            sowork: doc.sowork,
+            company: fixcompany,
+            addcom: fixaddcom,
+            sowork: fixsowork,
             tenkysu: doc.tenkysu || '',
             time: doc.time || '',
             motatangca: doc.motatangca || '',
